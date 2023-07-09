@@ -52,13 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 341.58.h,
                   width: 317.72.w,
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        size: 300,
-                        Icons.qr_code_scanner_rounded,
-                        color: Color(0xff2D2B4E),
-                      )),
+                  child: Image.asset(
+                    'assets/images/QR Code.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 34.0.ph(),
                 SizedBox(
@@ -110,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color:const Color(0xff784E00)),
                                 11.0.ph(),
                                 AppText(
-                                  text: '@oalshokri',
+                                  text: '@hussendev',
                                   fontSize: 13.sp,
                                   color:const Color(0xff784E00),
                                 ),
