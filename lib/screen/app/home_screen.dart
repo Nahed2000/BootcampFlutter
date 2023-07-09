@@ -49,14 +49,23 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
                 34.0.ph(),
-                SizedBox(
-                  height: 341.58.h,
-                  width: 317.72.w,
-                  child: Image.asset(
-                    'assets/images/QR Code.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
+               GestureDetector(
+                 onLongPress: (){
+                   //TODO: enable sharing
+                 },
+                 onTap: (){
+                   //TODO: enable sharing
+                 },
+                 child:  SizedBox(
+                   height: 341.58.h,
+                   width: 317.72.w,
+                   child: Image.asset(
+                     'assets/images/QR Code.png',
+                     fit: BoxFit.cover,
+                   ),
+                 ),
+               )
+               ,
                 34.0.ph(),
                 SizedBox(
                   height: 116.h,
