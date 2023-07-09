@@ -4,14 +4,9 @@ import 'package:flutter_svg/svg.dart';
 
 import '../widget/custom_button.dart';
 
-class LunchScreen extends StatefulWidget {
-  const LunchScreen({Key? key}) : super(key: key);
+class LunchScreen extends StatelessWidget {
+  const LunchScreen({super.key});
 
-  @override
-  State<LunchScreen> createState() => _LunchScreenState();
-}
-
-class _LunchScreenState extends State<LunchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +31,9 @@ class _LunchScreenState extends State<LunchScreen> {
             SizedBox(height: MediaQuery.of(context).size.height / 5),
             CustomButton(
               title: 'Get Started',
-              onPress: () {},
+              onPress: () {
+                Navigator.pushReplacementNamed(context, '/login_screen');
+              },
             )
           ],
         ),
