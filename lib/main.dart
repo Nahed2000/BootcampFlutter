@@ -1,3 +1,4 @@
+import 'package:bot_flut/pref/pref_controller.dart';
 import 'package:bot_flut/screen/app/home_screen.dart';
 import 'package:bot_flut/screen/auth/login.dart';
 import 'package:bot_flut/screen/auth/register.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferenceController().initPref();
   runApp(const MyApp());
 }
 

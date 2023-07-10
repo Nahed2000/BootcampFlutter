@@ -1,9 +1,11 @@
+import 'package:bot_flut/api/controller/follow_controller.dart';
 import 'package:bot_flut/constants.dart';
 import 'package:bot_flut/util/extensions/sized_box_extension.dart';
 import 'package:bot_flut/widget/app_text.dart';
-import 'package:bot_flut/widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../api/controller/link_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,7 +24,30 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           // CustomButton(onPress: (){}, title: title)
           IconButton(
-              onPressed: () {},
+              onPressed: () async {
+                // var we = await ApiUpdateUserLocation().updateUserLocation(
+                //     lat: 31.5123.toString(), long: 34.472.toString());
+                // print(we.message);
+                // print(we.status);
+                // print(we.data![0]);
+                // print(we.data![1]);
+                // var we1 = await ApiLinksController().deletePost(id: '41');
+                // print(we1.message);
+                // print(we1.status);
+                // print(we1.message);
+                // print(we1.status);
+                // print(we1.data![0]);
+                // var we = await ApiLinksController().indexLinks();
+                // var we = await ApiLinksController().updatePost(
+                //     title: 'facebook',
+                //     id: '51',
+                //     isActive: '0',
+                //     link: 'facebook.com/aliahmed',
+                //     username: 'aliahmed');
+                // print(we.data![0].title);
+                var we = await ApiFollowController().indexFollow();
+                print(we.data![0].followers);
+              },
               icon: const Icon(
                 Icons.search,
                 color: Colors.black,
@@ -49,23 +74,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
                 34.0.ph(),
-               GestureDetector(
-                 onLongPress: (){
-                   //TODO: enable sharing
-                 },
-                 onTap: (){
-                   //TODO: enable sharing
-                 },
-                 child:  SizedBox(
-                   height: 341.58.h,
-                   width: 317.72.w,
-                   child: Image.asset(
-                     'assets/images/QR Code.png',
-                     fit: BoxFit.cover,
-                   ),
-                 ),
-               )
-               ,
+                GestureDetector(
+                  onLongPress: () {
+                    //TODO: enable sharing
+                  },
+                  onTap: () {
+                    //TODO: enable sharing
+                  },
+                  child: SizedBox(
+                    height: 341.58.h,
+                    width: 317.72.w,
+                    child: Image.asset(
+                      'assets/images/QR Code.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
                 34.0.ph(),
                 SizedBox(
                   height: 116.h,
@@ -83,8 +107,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children:[
-                                const  Icon(
+                              children: [
+                                const Icon(
                                   Icons.add,
                                   size: 30,
                                   color: Color(0xff2D2B4E),
@@ -94,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   text: 'ADD',
                                   fontSize: 18.sp,
                                   fontWeight: FontWeight.bold,
-                                  color:const Color(0xff2D2B4E),
+                                  color: const Color(0xff2D2B4E),
                                 ),
                               ],
                             ),
@@ -113,12 +137,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                     text: 'FACEBOOK',
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
-                                    color:const Color(0xff784E00)),
+                                    color: const Color(0xff784E00)),
                                 11.0.ph(),
                                 AppText(
                                   text: '@hussendev',
                                   fontSize: 13.sp,
-                                  color:const Color(0xff784E00),
+                                  color: const Color(0xff784E00),
                                 ),
                               ],
                             ),
@@ -168,7 +192,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.grey,
                     ),
                   ),
-
                 ],
               ),
             ),

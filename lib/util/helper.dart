@@ -13,7 +13,7 @@ mixin Helper {
         elevation: 0,
         shape: OutlineInputBorder(
             borderRadius: BorderRadius.circular(24),
-            borderSide: BorderSide(color: kRedColor)),
+            borderSide: const BorderSide(color: kRedColor)),
         backgroundColor: error ? Colors.red : Colors.green,
         behavior: SnackBarBehavior.floating,
         duration: const Duration(seconds: 3),

@@ -1,9 +1,13 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:bot_flut/api/controller/auth_controller.dart';
 import 'package:bot_flut/constants.dart';
 import 'package:bot_flut/util/helper.dart';
 import 'package:bot_flut/widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../model/api_response.dart';
 import '../../widget/custom_textfield.dart';
 import '../../widget/social_button.dart';
 
@@ -62,17 +66,16 @@ class _LoginScreenState extends State<LoginScreen> with Helper {
                 hint: '*********'),
             const SizedBox(height: 15),
             CustomButton(
-                onPress: () {
+                onPress: () async {
                   checkData()
-                      ? Navigator.pushNamedAndRemoveUntil(
-                          context, '/home_screen', (route) => false)
+                      ? await login()
                       : showSnackBar(context,
                           message: 'Enter Required Data !', error: true);
                 },
                 title: 'Login'),
             const SizedBox(height: 20),
             CustomButton(
-                onPress: () {
+                onPress: () async {
                   Navigator.pushNamed(context, '/register_screen');
                 },
                 title: 'Register',
@@ -87,7 +90,8 @@ class _LoginScreenState extends State<LoginScreen> with Helper {
             SocialMediaButton(
               title: 'SIGN IN WITH GOOGLE',
               onPress: () {
-                showSnackBar(context, message: 'Something went wrong', error: true);
+                showSnackBar(context,
+                    message: 'Something went wrong', error: true);
               },
             )
           ],
@@ -101,5 +105,16 @@ class _LoginScreenState extends State<LoginScreen> with Helper {
       return true;
     }
     return false;
+  }
+
+  Future<void> login() async {
+    ApiResponse apiResponse = await ApiAuthController()
+        .login(password: passwordController.text, email: emailController.text);
+    if (apiResponse.status) {
+      Navigator.pushNamedAndRemoveUntil(
+          context, '/home_screen', (route) => false);
+    }
+    showSnackBar(context,
+        message: apiResponse.message, error: !apiResponse.status);
   }
 }

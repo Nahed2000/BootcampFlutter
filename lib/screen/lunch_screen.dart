@@ -1,4 +1,5 @@
 import 'package:bot_flut/constants.dart';
+import 'package:bot_flut/pref/pref_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -32,7 +33,10 @@ class LunchScreen extends StatelessWidget {
             CustomButton(
               title: 'Get Started',
               onPress: () {
-                Navigator.pushReplacementNamed(context, '/login_screen');
+                String rout = SharedPreferenceController().loggedIn
+                    ? '/home_screen'
+                    : '/login_screen';
+                Navigator.pushReplacementNamed(context, rout);
               },
             )
           ],
